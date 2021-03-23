@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Portal | AJAX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">Employee Portal | AJAX</a>
+    </nav>
+
+    <!-- Employee Portal Intro -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <h1>Employee Portal</h1>
+                <p class="lead">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto quis odit nulla omnis laudantium in
+                    delectus hic sapiente maxime nam provident officia earum adipisci reprehenderit mollitia officiis,
+                    aliquam facere asperiores nostrum, nemo tempore iure. Laudantium dolor nobis quibusdam iste est!
+                </p>
+                <button class="btn btn-success" data-toggle="modal" data-target="#add-employee-modal">Add
+                    Employee</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Employee Modal -->
+    <div class="modal" id="add-employee-modal">
+        <div class="modal-dialog">
+            <div class="modal-content animated slideInLeft">
+                <div class="modal-header bg-success text-white">
+                    <h3>Add Employee</h3>
+                    <button class="close" data-dismiss="modal">
+                        <i class="fa fa-times-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form id="add-employee-form">
+                        <div class="form-group">
+                            <input required id="add-first-name" type="text" class="form-control"
+                                placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input required id="add-last-name" type="text" class="form-control" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input required id="add-email" type="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <select required id="add-gender" class="form-control">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input required id="add-ip-address" type="text" class="form-control"
+                                placeholder="IP Address">
+                        </div>
+                        <div>
+                            <input type="submit" value="Add Employee" class="btn btn-success">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Employee Modal -->
+    <div class="modal" id="update-employee-modal">
+        <div class="modal-dialog">
+            <div class="modal-content animated slideInRight">
+                <div class="modal-header bg-secondary text-white">
+                    <h3>Update Employee</h3>
+                    <button class="close" data-dismiss="modal">
+                        <i class="fa fa-times-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form id="update-employee-form">
+                        <input hidden required id="update-emp-id" type="text" class="form-control"
+                            placeholder="Employee ID">
+                        <div class="form-group">
+                            <input required id="update-first-name" type="text" class="form-control"
+                                placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input required id="update-last-name" type="text" class="form-control"
+                                placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input required id="update-email" type="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <select required id="update-gender" class="form-control">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input required id="update-ip-address" type="text" class="form-control"
+                                placeholder="IP Address">
+                        </div>
+                        <div>
+                            <input type="submit" value="Update Employee" class="btn btn-secondary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee Table -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <table class="table table-hover table-striped table-secondary text-center">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th>EMP ID</th>
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
+                            <th>EMAIL</th>
+                            <th>GENDER</th>
+                            <th>IP ADDRESS</th>
+                            <TH>ACTIONS</TH>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>
